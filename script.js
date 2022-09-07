@@ -1,55 +1,78 @@
 let computerScore=0;
 let playerScore=0;
 
+//div manipulation
+const playerScore_div = document.querySelector(".player-score");
+const computerScore_div = document.querySelector(".computer-score");
+const result_span = document.querySelector(".result");
 
+//buttons
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+const playerSelection = main();
+const computerSelection = computerChoice();
+
+//get computer choice
+function computerChoice() {
+    const choices = ["rock","paper","scissors"]
+    return (choices[Math.floor(Math.random() * choices.length)]);    
+}
+
+//get player choice
+function main () {
+    rock.addEventListener('click', function() {
+    playRound("rock", computerChoice())
+});
+    paper.addEventListener('click', function() {
+    playRound("paper", computerChoice())
+});
+    scissors.addEventListener('click', function() {
+    playRound("scissors", computerChoice())
+});
+}
+
+//play the game, change scores, display result message
 function playRound (playerSelection, computerSelection) {
+
     
 
-    if (playerSelection.toLowerCase()==="rock" && computerSelection==="paper") {
+    if (playerSelection === "rock" && computerSelection === "paper") {
         computerScore++;
-        return("You lose! Paper beats rock."+ "The score is "+ playerScore+" to "+computerScore);
+        result_span.innerText = "You lose! Paper beats rock.";
         
     }
-    if (playerSelection.toLowerCase()==="rock" && computerSelection==="scissors") {
+    if (playerSelection === "rock" && computerSelection === "scissors") {
         playerScore++;
-        return("You win! Rock beats scissors!"+ "The score is "+ playerScore+" to "+computerScore);
+        result_span.innerText = ("You win! Rock beats scissors!");
        
     }
-    if (playerSelection.toLowerCase()==="paper" && computerSelection==="scissors") {
+    if (playerSelection === "paper" && computerSelection === "scissors") {
         computerScore++;
-        return("You lose! Scissors beats paper."+ "The score is "+ playerScore+" to "+computerScore)
+        result_span.innerText = ("You lose! Scissors beats paper.")
     }
-    if (playerSelection.toLowerCase()==="paper" && computerSelection==="rock") {
+    if (playerSelection === "paper" && computerSelection === "rock") {
         playerScore++;
-        return("You win! Paper beats rock!"+ "The score is "+ playerScore+" to "+computerScore)
+        result_span.innerText = ("You win! Paper beats rock!")
     }
-    if (playerSelection.toLowerCase()==="scissors" && computerSelection==="rock") {
+    if (playerSelection === "scissors" && computerSelection === "rock") {
         computerScore++;
-        return("You lose! Rock beats scissors."+ "The score is "+ playerScore+" to "+computerScore);
+        result_span.innerText = ("You lose! Rock beats scissors.");
     }
-    if (playerSelection.toLowerCase()==="scissors" && computerSelection==="paper") {
+    if (playerSelection === "scissors" && computerSelection === "paper") {
         playerScore++;
-        return("You win! Scissors beats paper!"+ "The score is "+ playerScore+" to "+computerScore)
+        result_span.innerText = ("You win! Scissors beats paper!")
     }
-    if (playerSelection.toLowerCase() === computerSelection) { 
-        return("It's a Tie! Play again!"+"The score is "+playerScore+" to "+computerScore)
+    if (playerSelection === computerSelection) { 
+        result_span.innerText = ("It's a Tie! Play again!")
     }
-        
+    playerScore_div.innerHTML = playerScore;
+    computerScore_div.innerHTML = computerScore;
+    
 }
 
 
-  for (let i = 0; ; i++) {
-  let array = ["rock","paper","scissors"]
-  const computerPlay =(array[Math.floor(Math.random() * array.length)]);
-  //console.log(computerPlay);
-  let playerSelection=prompt ("Rock, Paper, or Scissors?");
-  let computerSelection=computerPlay;
-  console.log(playRound(playerSelection, computerSelection))
- 
-  if (playerScore ==5) {
-    alert("You beat the computer!")
-  }
-  if (computerScore ==5) {
-    alert("The computer smoked you!")
-  }
-  }
+
+
+

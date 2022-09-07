@@ -1,0 +1,47 @@
+.title {
+    display: flex;
+    justify-content: center;
+
+}
+
+.score-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.buttons {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-top: 50px;
+    max-height: 75px;
+    background-color: transparent;
+}
+
+.rock {
+    background-color: transparent;
+    border: none;
+}
+
+.paper {
+    background-color: transparent;
+    border: none;
+}
+
+.scissors {
+    background-color: transparent;
+    border: none;
+}
+
+.result {
+    display:flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+}
